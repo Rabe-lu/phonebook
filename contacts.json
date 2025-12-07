@@ -1,18 +1,11 @@
 {
     "contacts": [
         {
-            "id": 1,
-            "first_name": "Иван",
-            "last_name": "Петров",
-            "phone": "+79161234567",
-            "comment": "Коллега по работе"
-        },
-        {
             "id": 2,
-            "first_name": "elena",
-            "last_name": "voronina",
-            "phone": "+79088725115",
-            "comment": "скидывайте нюдсы"
+            "first_name": "Елена ",
+            "last_name": "Воронина",
+            "phone": "+7908765352",
+            "comment": "скидывайте нюдсы или не скидывайте "
         },
         {
             "id": 5,
@@ -24,16 +17,10 @@
         {
             "id": 6,
             "first_name": "Люся",
-            "last_name": "Картуся",
+            "last_name": "Пампуся",
             "phone": "+78172361234",
-            "comment": "ну не звони ей никогда примерно"
-        },
-        {
-            "id": 7,
-            "first_name": "ff",
-            "last_name": "f",
-            "phone": "f",
-            "comment": "f"
+            "comment": "ну не звони ей никогда примерно",
+            "2": "kjdfk "
         },
         {
             "id": 8,
