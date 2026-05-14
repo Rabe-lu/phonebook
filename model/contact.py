@@ -1,5 +1,5 @@
 class Contact:
-    fields = ["last_name", "first_name", "phone", "comment"]
+    fields = ["first_name", "last_name", "phone", "comment"]
 
     def __init__(self, contact_id, first_name, last_name, phone, comment):
         self.id = contact_id
@@ -9,7 +9,7 @@ class Contact:
         self.comment = comment
 
     def contact_format(self):
-        return f'{self.last_name} {self.first_name}, tel: {self.phone}, //{self.comment}//'
+        return f'{self.first_name} {self.last_name}, tel: {self.phone}, //{self.comment}//'
 
     @classmethod
     def from_dict(cls, data: dict):

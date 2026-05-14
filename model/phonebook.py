@@ -1,3 +1,4 @@
+from exeptions import InvalidIndexError
 from .file_reader import FileReader
 from .file_writer import FileWriter
 from .contact import Contact
@@ -49,20 +50,26 @@ class PhoneBook:
 
     def change_contact(self, contact_id, field_to_change_number, change_value):
         field_to_change = Contact.fields[field_to_change_number - 1]
+        is_contact_id_exist = False
         for contact in self.contacts:
             if contact.id == contact_id:
                 setattr(contact, field_to_change, change_value)
+                is_contact_id_exist = True
+                break
 
-                data_to_save = {
-                    "contacts": [c.to_dict() for c in self.contacts],
-                    "last_id": self.last_id
-                }
+        if not is_contact_id_exist:
+            raise InvalidIndexError
 
-                self.writer.save_file(data_to_save)
-                print('-' * 20)
-                print(f'Успешно изменен контакт: \n'
-                      f'{contact.contact_format()}')
-                print('-' * 20)
+        data_to_save = {
+            "contacts": [c.to_dict() for c in self.contacts],
+            "last_id": self.last_id
+        }
+
+        self.writer.save_file(data_to_save)
+        print('-' * 20)
+        print(f'Успешно изменен контакт: \n'
+              f'{contact.contact_format()}')
+        print('-' * 20)
 
     def delete_contact(self, contact_id):
         for i, contact in enumerate(self.contacts):
