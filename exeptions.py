@@ -4,3 +4,7 @@ class InvalidIndexError(Exception):
 
 class InvalidFieldError(Exception):
     pass
+
+
+class InvalidContactIdError(Exception):
+    pass

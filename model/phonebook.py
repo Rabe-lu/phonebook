@@ -1,4 +1,4 @@
-from exeptions import InvalidIndexError
+from exeptions import InvalidIndexError, InvalidContactIdError
 from .file_reader import FileReader
 from .file_writer import FileWriter
 from .contact import Contact
@@ -35,6 +35,8 @@ class PhoneBook:
         print('-' * 20 + '\n')
 
     def search(self, search_string: str):
+        if not isinstance(search_string, str):
+            raise TypeError
         search_string = search_string.lower()
         result = []
         for contact in self.contacts:
@@ -72,16 +74,21 @@ class PhoneBook:
         print('-' * 20)
 
     def delete_contact(self, contact_id):
+        contact_id_exist = False
         for i, contact in enumerate(self.contacts):
             if contact.id == contact_id:
                 del self.contacts[i]
+                contact_id_exist = True
+                break
+        if not contact_id_exist:
+            raise InvalidContactIdError
 
-                data_to_save = {
-                    "contacts": [c.to_dict() for c in self.contacts],
-                    "last_id": self.last_id
-                }
+        data_to_save = {
+            "contacts": [c.to_dict() for c in self.contacts],
+            "last_id": self.last_id
+        }
 
-                self.writer.save_file(data_to_save)
-                print(f'Успешно удален контакт: \n'
-                      f'{contact.contact_format()}')
-                print('-' * 20)
+        self.writer.save_file(data_to_save)
+        print(f'Успешно удален контакт: \n'
+              f'{contact.contact_format()}')
+        print('-' * 20)
